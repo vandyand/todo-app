@@ -3,85 +3,65 @@ import React from 'react'
 export default class extends React.Component {
 
     state = {
-        label: '',
-        list: {
-            name: '',
-            desc: '',
-        },
-        item: {
-            name: '',
-            list_id: '',
-            desc: '',
-            due: '',
-        }
+        name: '',
+        list_id: '',
+        desc: '',
+        due: '',
     }
 
-    componentDidMount() {
-        this.setState({ label: this.props.label })
+    changeHandler = ({ target }) => {
+        this.setState({
+            [target.name]: target.value
+        })
     }
 
-    changeHandler = (target) => {
-       
-        console.log(this.state)
+    submitHandler = (event) => {
+        event.preventDefault()
+        const data = { ...this.state }
+        console.log("form submitHandler called! data:", data)
+        this.props.submitHandler(data)
     }
-
-    renderForm(label) {
-        return (
-            <form onSubmit={this.props.handleSubmit}>
-                <label>{this.state.label} Name:</label>
-                <input
-                    type='text'
-                    id='name'
-                    name='list.name'
-                    onChange={this.changeHandler}
-                    value={this.state.label === "List" ? this.state.list.name : this.state.item.name}
-                    required />
-
-                <br />
-
-                <label>{this.state.label} Description:</label>
-                <input
-                    type='text'
-                    id='desc'
-                    name='list.desc'
-                    onChange={this.changeHandler}
-                    value={this.state.label === "List" ? this.state.list.desc : this.state.item.desc}
-                    />
-
-                <br />
-
-                {() => {
-                    if (this.state.label !== "List") {
-                        return (
-                            <div>
-                                <label>{this.state.label} Due:</label>
-                                <input
-                                    type='text'
-                                    id='due'
-                                    name='item.due'
-                                    onChange={this.changeHandler}
-                                    value={this.state.item.due}
-                                    />
-                                <br />
-                            </div>
-                        )
-                    }
-                    return(
-                        <div></div>
-                    )
-                }}
-
-                <button>{`Add ${this.state.label}`}</button>
-            </form>
-        )
-    }
-
 
     render() {
         return (
             <div>
-                <h2>Add {this.state.label}</h2>
-                {this.renderForm()}
+                <h2>Add Item:</h2>
+                <form onSubmit={this.submitHandler}>
+                    <label>Name:</label>
+                    <input
+                        type='text'
+                        id='name'
+                        name='name'
+                        onChange={this.changeHandler}
+                        value={this.state.name}
+                        required />
+
+                    <br />
+
+                    <label>Description:</label>
+                    <input
+                        type='text'
+                        id='desc'
+                        name='desc'
+                        onChange={this.changeHandler}
+                        value={this.state.desc}
+                    />
+
+                    <br />
+
+                    <label>Due:</label>
+                    <input
+                        type='text'
+                        id='due'
+                        name='due'
+                        onChange={this.changeHandler}
+                        value={this.state.due}
+                    />
+
+                    <br />
+
+                    <button>Add</button>
+                </form>
             </div>
         )
     }

@@ -4,11 +4,6 @@ import ListForm from './ListForm'
 
 export default class extends React.Component{
 
-    submitHandler = (newList) => {
-        console.log(newList)
-        this.props.addList(newList)
-    }
-
     render(){
         return(
             <div>
@@ -22,7 +17,7 @@ export default class extends React.Component{
                         <button>Delete</button> */}
                     </button>
                 )})}
-                <ListForm submitHandler={this.submitHandler}/>
+                <ListForm submitHandler={this.props.addList}/>
             </div>
         )
     }    

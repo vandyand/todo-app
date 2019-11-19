@@ -1,6 +1,7 @@
 import React from 'react'
 import Lists from './Lists'
 import List from './List'
+import { API_URL } from '../config'
 
 export default class extends React.Component {
     state = {
@@ -21,7 +22,7 @@ export default class extends React.Component {
 
     fetchLists = () => {
         console.log('fetchLists called!')
-        fetch('http://localhost:4001/lists')
+        fetch(`${API_URL}/lists`)
             .then(response => response.json())
             .then(lists => {
                 this.setState({ lists })
@@ -31,7 +32,7 @@ export default class extends React.Component {
 
     fetchItems = () => {
         console.log('fetchItems called!')
-        fetch('http://localhost:4001/items')
+        fetch(`${API_URL}/items`)
             .then(response => response.json())
             .then(items => {
                 this.setState({ items })
@@ -41,29 +42,33 @@ export default class extends React.Component {
 
     addList = (newList) => {
         console.log('addList called')
-        console.log(newList)
-        // let newListt = {...newList}
-        fetch('http://localhost:4001/lists', {
+        fetch(`${API_URL}/lists`, {
             method: 'post',
             body: JSON.stringify(newList),
             headers: { 'Content-Type': 'application/json' }
         })
             .then(response => response.json())
             .catch(err => console.log(err))
-            .then(response => console.log(response))
+            .then(response => {
+                    console.log(response)
+                    this.fetchLists()
+                })
     }
 
     addItem = (newItem) => {
         console.log('addList called')
-        fetch('http://localhost:4001/item', {
+        newItem.list_id = this.state.list_id
+        fetch(`${API_URL}/items`, {
             method: 'post',
             body: JSON.stringify(newItem),
             headers: { 'Content-Type': 'application/json' }
         })
             .then(response => response.json())
             .catch(err => console.log(err))
-            .then(response => console.log(response))
-
+            .then(response => {
+                console.log(response)
+                this.fetchItems()
+            })
     }
 
     render() {
