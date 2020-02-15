@@ -1,6 +1,6 @@
 // Development
 const API_URL = "http://localhost:4001"
-// const API_URL = "http://heroku.something.com"
+// const API_URL = "https://todo-server.vandyand.now.sh"
 
 
 

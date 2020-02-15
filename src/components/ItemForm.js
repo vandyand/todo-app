@@ -18,7 +18,6 @@ export default class extends React.Component {
     submitHandler = (event) => {
         event.preventDefault()
         const data = { ...this.state }
-        console.log("form submitHandler called! data:", data)
         this.props.submitHandler(data)
     }
 

@@ -56,8 +56,8 @@ export default class extends React.Component {
     }
 
     addItem = (newItem) => {
-        console.log('addList called')
         newItem.list_id = this.state.list_id
+        console.log('addList called. newItem:',newItem)
         fetch(`${API_URL}/items`, {
             method: 'post',
             body: JSON.stringify(newItem),
@@ -75,8 +75,6 @@ export default class extends React.Component {
         console.log(this.state)
         return (
             <div>
-                <p>Testing testing 1 2 3 (from index.js)</p>
-
                 <Lists lists={this.state.lists}
                     selectList={this.selectList}
                     addList={this.addList} />
