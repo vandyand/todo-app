@@ -50,14 +50,14 @@ export default class extends React.Component {
             .then(response => response.json())
             .catch(err => console.log(err))
             .then(response => {
-                    console.log(response)
-                    this.fetchLists()
-                })
+                console.log(response)
+                this.fetchLists()
+            })
     }
 
     addItem = (newItem) => {
         newItem.list_id = this.state.list_id
-        console.log('addList called. newItem:',newItem)
+        console.log('addList called. newItem:', newItem)
         fetch(`${API_URL}/items`, {
             method: 'post',
             body: JSON.stringify(newItem),
@@ -71,13 +71,47 @@ export default class extends React.Component {
             })
     }
 
+
+    deleteList = (listToDelete) => {
+        console.log('delete list called!', listToDelete)
+        if (window.confirm(`Are you sure you want to delete ${listToDelete.name}?`)) {
+            fetch(`${API_URL}/lists`, {
+                method: 'delete',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ _id: listToDelete._id })
+            })
+            .catch(err => console.log(err))
+            .then(response => {
+                console.log(response)
+                this.fetchLists()
+            })
+        }
+    }
+
+    deleteItem = (itemToDelete) => {
+        console.log('delete item called!', itemToDelete)
+        if (window.confirm(`Are you sure you want to delete ${itemToDelete.name}?`)) {
+            fetch(`${API_URL}/items`, {
+                method: 'delete',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ _id: itemToDelete._id })
+            })
+            .catch(err => console.log(err))
+            .then(response => {
+                console.log(response)
+                this.fetchLists()
+            })
+        }
+    }
+
     render() {
         console.log(this.state)
         return (
             <div>
                 <Lists lists={this.state.lists}
                     selectList={this.selectList}
-                    addList={this.addList} />
+                    addList={this.addList}
+                    deleteList={this.deleteList} />
 
                 <List state={this.state} addItem={this.addItem} />
 
