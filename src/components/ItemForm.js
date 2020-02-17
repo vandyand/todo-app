@@ -19,6 +19,7 @@ export default class extends React.Component {
         event.preventDefault()
         const data = { ...this.state }
         this.props.submitHandler(data)
+        this.props.addButton()
     }
 
     render() {

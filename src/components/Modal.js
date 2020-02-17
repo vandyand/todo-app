@@ -1,69 +1,61 @@
-import React from 'react'
-import Modal from 'react-modal'
-import Form from './Form'
+import React from 'react';
+// import ReactDOM from 'react-dom';
+import Modal from 'react-modal';
+import ListForm from './ListForm';
+import ItemForm from './ItemForm';
 
 const customStyles = {
-    content: {
-        top: '50%',
-        left: '50%',
-        right: 'auto',
-        bottom: 'auto',
-        marginRight: '-50%',
-        transform: 'translate(-50%, -50%)'
-    }
-}
-
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)'
+  }
+};
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
-Modal.setAppElement('#root')
+// Modal.setAppElement(el)
+
 
 export default class extends React.Component {
-    constructor(props) {
-        super(props);
+  constructor() {
+    super();
 
-        this.state = {
-            modalIsOpen: false
-        };
+    this.state = {
+      modalIsOpen: false
+    };
 
-        this.openModal = this.openModal.bind(this);
-        this.afterOpenModal = this.afterOpenModal.bind(this);
-        this.closeModal = this.closeModal.bind(this);
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+  }
+
+  openModal() {
+    this.setState({ modalIsOpen: true });
+  }
+
+  closeModal() {
+    this.setState({ modalIsOpen: false });
+  }
+
+  listOrItem = () => {
+    if(this.props.listOrItem==='list') {
+      return(<ListForm submitHandler={this.props.submitHandler} addButton={this.closeModal} />)
     }
-
-    openModal() {
-        this.setState({ modalIsOpen: true });
+    else if(this.props.listOrItem==='item') {
+      return(<ItemForm submitHandler={this.props.submitHandler} addButton={this.closeModal} />)
     }
+  }
 
-    afterOpenModal() {
-        // references are now sync'd and can be accessed.
-        this.subtitle.style.color = '#f00';
-    }
-
-    closeModal() {
-        this.setState({ modalIsOpen: false });
-    }
-
-    render() {
-        return (
-            <div>
-                <button className="green button" onClick={this.openModal}>{this.props.message}</button>
-                <Modal
-                    isOpen={this.state.modalIsOpen}
-                    onAfterOpen={this.afterOpenModal}
-                    onRequestClose={this.closeModal}
-                    style={customStyles}
-                    contentLabel="Example Modal"
-                >
-
-                    <h2 ref={subtitle => this.subtitle = subtitle}>Hello</h2>
-                    <Form 
-                        dataRefresh={this.props.dataRefresh}
-                        closeModal={this.closeModal}
-                        />
-                    <button onClick={this.closeModal}>close</button>
-
-                </Modal>
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div>
+        <button onClick={this.openModal}>+</button>
+        <Modal isOpen={this.state.modalIsOpen} style={customStyles} contentLabel="Example Modal" ariaHideApp={false}>
+          {this.listOrItem()}
+        </Modal>
+      </div>
+    );
+  }
 }

@@ -9,6 +9,7 @@ export default class extends React.Component {
                 <div>{this.props.item.due}</div>
                 {/* <button>Edit</button>
                 <button>Delete</button> */}
+                <br/>
             </div>
         )
     }

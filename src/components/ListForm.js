@@ -18,6 +18,7 @@ export default class extends React.Component {
         const data = { ...this.state }
         console.log("form submitHandler called! data:", data)
         this.props.submitHandler(data)
+        this.props.addButton()
     }
 
     render() {
