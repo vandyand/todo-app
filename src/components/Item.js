@@ -1,4 +1,5 @@
 import React from 'react'
+import Modal from './Modal'
 
 export default class extends React.Component {
     render() {
@@ -7,8 +8,10 @@ export default class extends React.Component {
                 <div><b>{this.props.item.name}</b></div>
                 <div>{this.props.item.desc}</div>
                 <div>{this.props.item.due}</div>
-                {/* <button>Edit</button>
-                <button>Delete</button> */}
+                <button onClick={this.props.deleteItem}>Delete</button>
+                <Modal submitHandler={this.props.updateItem} listOrItem="item" displayText="Update" />
+                <br/>
+                <hr/>
                 <br/>
             </div>
         )

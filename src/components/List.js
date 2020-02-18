@@ -16,11 +16,13 @@ export default class extends React.Component {
                 {/*List Description*/}
                 {this.props.state.lists.filter(val => val._id === this.props.state.list_id)
                     .map(val => <h2 key={val._id}>{val.desc}</h2>)}
+
                 {/*List Items*/}
                 {this.props.state.items.filter(val => val.list_id === this.props.state.list_id)
-                    .map(item => <Item key={item._id} item={item} />)}
+                    .map(item => <Item key={item._id} item={item} deleteItem={this.props.deleteItem} updateItem={this.props.updateItem}/>)}
+
                 {/*Add Items*/}
-                <Modal submitHandler={this.props.addItem} listOrItem="item" />
+                <Modal submitHandler={this.props.addItem} listOrItem="item" displayText="+"/>
                 {/* <ItemForm submitHandler={this.props.addItem}/> */}
             </div>
         )

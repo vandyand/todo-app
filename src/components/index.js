@@ -80,11 +80,13 @@ export default class extends React.Component {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ _id: listToDelete._id })
             })
-            .catch(err => console.log(err))
-            .then(response => {
-                console.log(response)
-                this.fetchLists()
-            })
+                .catch(err => console.log(err))
+                .then(response => {
+                    console.log(response)
+                    this.fetchLists()
+                    this.fetchItems()
+                    this.setState({ list_id: '' })
+                })
         }
     }
 
@@ -96,12 +98,45 @@ export default class extends React.Component {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ _id: itemToDelete._id })
             })
+                .catch(err => console.log(err))
+                .then(response => {
+                    console.log(response)
+                    this.fetchLists()
+                    this.fetchItems()
+                })
+        }
+    }
+
+    updateList = (listToUpdate) => {
+        console.log('update list called!', listToUpdate)
+        fetch(`${API_URL}/lists`, {
+            method: 'put',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(listToUpdate)
+        })
             .catch(err => console.log(err))
             .then(response => {
                 console.log(response)
                 this.fetchLists()
+                this.fetchItems()
+                this.setState({ list_id: '' })
             })
-        }
+    }
+
+    updateItem = (itemToUpdate) => {
+        console.log('update item called!', itemToUpdate)
+        fetch(`${API_URL}/items`, {
+            method: 'put',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(itemToUpdate)
+        })
+            .catch(err => console.log(err))
+            .then(response => {
+                console.log(response)
+                this.fetchLists()
+                this.fetchItems()
+                this.setState({ list_id: '' })
+            })
     }
 
     render() {
@@ -111,9 +146,10 @@ export default class extends React.Component {
                 <Lists lists={this.state.lists}
                     selectList={this.selectList}
                     addList={this.addList}
-                    deleteList={this.deleteList} />
+                    deleteList={this.deleteList}
+                    updateList={this.updateList} />
 
-                <List state={this.state} addItem={this.addItem} />
+                <List state={this.state} addItem={this.addItem} deleteItem={this.deleteItem} updateItem={this.updateItem} />
 
             </div>
         )

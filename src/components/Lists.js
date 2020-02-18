@@ -17,11 +17,13 @@ export default class extends React.Component {
                                 <div>{list.desc}</div>
                                 {/* <button>Edit</button> */}
                             </button>
+                            <Modal submitHandler={this.props.updateList} listOrItem="list" displayText="Update" />
                             <button onClick={() => this.props.deleteList(list)}>Delete</button>
+                            <hr/>
                         </div>
                     )
                 })}
-                <Modal submitHandler={this.props.addList} listOrItem="list" />
+                <Modal submitHandler={this.props.addList} listOrItem="list" displayText="+" />
             </div>
         )
     }

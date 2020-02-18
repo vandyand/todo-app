@@ -19,13 +19,17 @@ export default class extends React.Component {
         event.preventDefault()
         const data = { ...this.state }
         this.props.submitHandler(data)
-        this.props.addButton()
+        this.props.closeButton()
+    }
+
+    close = () => {
+        this.props.closeButton()
     }
 
     render() {
         return (
             <div>
-                <h2>Add Item:</h2>
+                <h2>{this.props.displayText} Item:</h2>
                 <form onSubmit={this.submitHandler}>
                     <label>Name:</label>
                     <input
@@ -60,7 +64,8 @@ export default class extends React.Component {
 
                     <br />
 
-                    <button>Add</button>
+                    <button>{this.props.displayText}</button>
+                    <button type="button" onClick={this.close}>Close</button>
                 </form>
             </div>
         )

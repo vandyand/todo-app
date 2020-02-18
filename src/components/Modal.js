@@ -41,17 +41,17 @@ export default class extends React.Component {
 
   listOrItem = () => {
     if(this.props.listOrItem==='list') {
-      return(<ListForm submitHandler={this.props.submitHandler} addButton={this.closeModal} />)
+      return(<ListForm submitHandler={this.props.submitHandler} closeButton={this.closeModal} displayText={this.props.displayText} />)
     }
     else if(this.props.listOrItem==='item') {
-      return(<ItemForm submitHandler={this.props.submitHandler} addButton={this.closeModal} />)
+      return(<ItemForm submitHandler={this.props.submitHandler} closeButton={this.closeModal}  displayText={this.props.displayText}/>)
     }
   }
 
   render() {
     return (
       <div>
-        <button onClick={this.openModal}>+</button>
+        <button onClick={this.openModal}>{this.props.displayText}</button>
         <Modal isOpen={this.state.modalIsOpen} style={customStyles} contentLabel="Example Modal" ariaHideApp={false}>
           {this.listOrItem()}
         </Modal>
