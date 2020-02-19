@@ -22,7 +22,7 @@ export default class extends React.Component {
                     .map(item => <Item key={item._id} item={item} deleteItem={this.props.deleteItem} updateItem={this.props.updateItem}/>)}
 
                 {/*Add Items*/}
-                <Modal submitHandler={this.props.addItem} listOrItem="item" displayText="+"/>
+                <Modal submitHandler={this.props.addItem} listOrItem={false} addOrUpdate={true} />
                 {/* <ItemForm submitHandler={this.props.addItem}/> */}
             </div>
         )

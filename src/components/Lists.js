@@ -3,7 +3,10 @@ import Modal from './Modal'
 
 export default class extends React.Component {
 
-    // listOrItem = 'list'
+    addIdToBody = (data) => {
+        const newBody = {_id:this.props.list._id,...data}
+        this.props.updateList(newBody)
+    }
 
     render() {
         return (
@@ -15,16 +18,17 @@ export default class extends React.Component {
                             <button onClick={() => this.props.selectList(list._id)}>
                                 <div><b>{list.name}</b></div>
                                 <div>{list.desc}</div>
-                                {/* <button>Edit</button> */}
                             </button>
-                            <Modal submitHandler={this.props.updateList} listOrItem="list" displayText="Update" />
+                            <Modal submitHandler={this.props.updateList} listOrItem={true} addOrUpdate={false} state={list}/>
                             <button onClick={() => this.props.deleteList(list)}>Delete</button>
                             <hr/>
                         </div>
                     )
                 })}
-                <Modal submitHandler={this.props.addList} listOrItem="list" displayText="+" />
+                <Modal submitHandler={this.props.addList} listOrItem={true} addOrUpdate={true} />
             </div>
         )
     }
 }
+
+
