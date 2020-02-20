@@ -1,22 +1,61 @@
 .App {
-  text-align: center;
+  border: 2px solid black;
+  margin: 5% 5% 10% 10%;
 }
 
-.App-logo {
-  height: 40vmin;
+.index {
+  border: 2px solid brown;
+  display: flex;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.lists {
+  border: 2px solid red;
+  width: 20%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #09d3ac;
+.listSelect {
+  border: 2px solid orange;
+  display: flex;
+  padding: 1%;
+}
+
+.listDisplay {
+  border: 2px solid yellow;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.item {
+  border: 2px solid green;
+  display: flex;
+  flex-basis: 50%;
+}
+
+button {
+  padding: 8px;
+  border: none;
+  background-color: #333;
+  color: #ddd;
+}
+
+button:hover {
+  background-color: #000;
+  color: #888;
+}
+
+.buttonAdd {
+  background-color: green;
+}
+
+.buttonUpdate {
+  background-color: yellow;
+  color:black;
+}
+
+.buttonDelete  {
+  background-color: red;
 }

@@ -140,9 +140,9 @@ export default class extends React.Component {
     }
 
     render() {
-        console.log(this.state)
+        console.log("render state: ",this.state)
         return (
-            <div>
+            <div className="index">
                 <Lists lists={this.state.lists}
                     selectList={this.selectList}
                     addList={this.addList}

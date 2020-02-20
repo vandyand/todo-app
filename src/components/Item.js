@@ -10,15 +10,12 @@ export default class extends React.Component {
 
     render() {
         return (
-            <div key={this.props.item._id} >
-                <div><b>{this.props.item.name}</b></div>
-                <div>{this.props.item.desc}</div>
-                <div>{this.props.item.due}</div>
+            <div className="item" key={this.props.item._id}>
+                <div>{this.props.item.name}</div>
+                {/* <div>{this.props.item.desc}</div>
+                <div>{this.props.item.due}</div> */}
                 <Modal submitHandler={this.addIdToBody} listOrItem={false} addOrUpdate={false} />
-                <button onClick={this.props.deleteItem}>Delete</button>
-                <br/>
-                <hr/>
-                <br/>
+                <button className="buttonDelete" onClick={this.props.deleteItem}>Delete</button>
             </div>
         )
     }

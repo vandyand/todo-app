@@ -9,7 +9,7 @@ export default class extends React.Component {
     render() {
         if(this.props.state.list_id==="") return(<div></div>);
         return (
-            <div>
+            <div className="listDisplay">
                 {/*List Title*/}
                 {this.props.state.lists.filter(val => val._id === this.props.state.list_id)
                     .map(val => <h1 key={val._id}>{val.name}</h1>)}

@@ -41,9 +41,6 @@ export default class extends React.Component {
                         onChange={this.changeHandler}
                         value={this.state.name}
                         required />
-
-                    <br />
-
                     <label>Description:</label>
                     <input
                         type='text'
@@ -52,9 +49,6 @@ export default class extends React.Component {
                         onChange={this.changeHandler}
                         value={this.state.desc}
                     />
-
-                    <br />
-
                     <button>{this.props.addOrUpdate===true ? 'Add' : 'Update'}</button>
                     <button type="button" onClick={this.close}>Close</button>
                 </form>

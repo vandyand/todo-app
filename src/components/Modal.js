@@ -51,8 +51,8 @@ export default class extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={this.openModal}>{this.props.addOrUpdate ? 'Add' : 'Update'}</button>
-        <Modal isOpen={this.state.modalIsOpen} style={customStyles} contentLabel="Example Modal" ariaHideApp={false}>
+        <button className={this.props.addOrUpdate ? 'buttonAdd' : 'buttonUpdate'} onClick={this.openModal}>{this.props.addOrUpdate ? 'Add' : 'Edit'}</button>
+        <Modal isOpen={this.state.modalIsOpen} style={customStyles} ariaHideApp={false}>
           {this.listOrItem()}
         </Modal>
       </div>
