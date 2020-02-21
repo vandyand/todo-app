@@ -17,8 +17,8 @@ export default class extends React.Component {
         event.preventDefault()
         let data = { ...this.state }
         console.log("form submitHandler called! data:", data)
-        if(!this.props.addOrUpdate){
-            data = {_id:this.props.state._id,...data}
+        if (!this.props.addOrUpdate) {
+            data = { _id: this.props.state._id, ...data }
         }
         this.props.submitHandler(data)
         this.props.closeButton()
@@ -31,7 +31,7 @@ export default class extends React.Component {
     render() {
         return (
             <div>
-                <h2>{this.props.addOrUpdate===true ? 'Add' : 'Update'} List:</h2>
+                <h2>{this.props.addOrUpdate === true ? 'Add' : 'Update'} List:</h2>
                 <form onSubmit={this.submitHandler}>
                     <label>Name:</label>
                     <input
@@ -49,7 +49,7 @@ export default class extends React.Component {
                         onChange={this.changeHandler}
                         value={this.state.desc}
                     />
-                    <button>{this.props.addOrUpdate===true ? 'Add' : 'Update'}</button>
+                    <button>{this.props.addOrUpdate === true ? 'Add' : 'Update'}</button>
                     <button type="button" onClick={this.close}>Close</button>
                 </form>
             </div>

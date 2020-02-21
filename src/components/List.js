@@ -7,7 +7,7 @@ import Modal from './Modal'
 export default class extends React.Component {
     // listOrItem = 'item'
     render() {
-        if(this.props.state.list_id==="") return(<div></div>);
+        if (this.props.state.list_id === "") return (<div></div>);
         return (
             <div className="listDisplay">
                 {/*List Title*/}
@@ -19,7 +19,7 @@ export default class extends React.Component {
 
                 {/*List Items*/}
                 {this.props.state.items.filter(val => val.list_id === this.props.state.list_id)
-                    .map(item => <Item key={item._id} item={item} deleteItem={this.props.deleteItem} updateItem={this.props.updateItem}/>)}
+                    .map(item => <Item key={item._id} item={item} deleteItem={this.props.deleteItem} updateItem={this.props.updateItem} />)}
 
                 {/*Add Items*/}
                 <Modal submitHandler={this.props.addItem} listOrItem={false} addOrUpdate={true} />

@@ -1,3 +1,7 @@
+/* * {
+  background-color:lightgray;
+} */
+
 .App {
   border: 2px solid black;
   margin: 5% 5% 10% 10%;
@@ -31,8 +35,16 @@
 
 .item {
   border: 2px solid green;
+  padding:2px;
   display: flex;
   flex-basis: 50%;
+}
+
+.itemName {
+  /* padding: 8px; */
+  border: none;
+  background-color: #333;
+  color: #ddd;
 }
 
 button {
@@ -43,19 +55,23 @@ button {
 }
 
 button:hover {
-  background-color: #000;
-  color: #888;
+  background-color: #777;
+  /* color: #000; */
 }
 
 .buttonAdd {
   background-color: green;
 }
 
-.buttonUpdate {
-  background-color: yellow;
-  color:black;
+.buttonCheck {
+  background-color: green;
 }
 
-.buttonDelete  {
+.buttonUpdate {
+  background-color: yellow;
+  color: black;
+}
+
+.buttonDelete {
   background-color: red;
 }

@@ -29,7 +29,7 @@ export default class extends React.Component {
     render() {
         return (
             <div>
-                <h2>{this.props.addOrUpdate===true ? 'Add' : 'Update'} Item:</h2>
+                <h2>{this.props.addOrUpdate === true ? 'Add' : 'Update'} Item:</h2>
                 <form onSubmit={this.submitHandler}>
                     <label>Name:</label>
                     <input
@@ -64,7 +64,7 @@ export default class extends React.Component {
 
                     <br />
 
-                    <button>{this.props.addOrUpdate===true ? 'Add' : 'Update'}</button>
+                    <button>{this.props.addOrUpdate === true ? 'Add' : 'Update'}</button>
                     <button type="button" onClick={this.close}>Close</button>
                 </form>
             </div>

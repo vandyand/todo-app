@@ -3,6 +3,7 @@ import React from 'react';
 import Modal from 'react-modal';
 import ListForm from './ListForm';
 import ItemForm from './ItemForm';
+import { FaPencilAlt, FaPlus } from 'react-icons/fa';
 
 const customStyles = {
   content: {
@@ -40,18 +41,25 @@ export default class extends React.Component {
   }
 
   listOrItem = () => {
-    if(this.props.listOrItem) {
-      return(<ListForm submitHandler={this.props.submitHandler} closeButton={this.closeModal} addOrUpdate={this.props.addOrUpdate} state={this.props.state}/>)
+    if (this.props.listOrItem) {
+      return (<ListForm submitHandler={this.props.submitHandler} closeButton={this.closeModal} addOrUpdate={this.props.addOrUpdate} state={this.props.state} />)
     }
     else {
-      return(<ItemForm submitHandler={this.props.submitHandler} closeButton={this.closeModal}  addOrUpdate={this.props.addOrUpdate}/>)
+      return (<ItemForm submitHandler={this.props.submitHandler} closeButton={this.closeModal} addOrUpdate={this.props.addOrUpdate} />)
     }
+  }
+
+  displaySymbol = (addOrUpdate) => {
+    if (addOrUpdate) { return <FaPlus /> }
+    return <FaPencilAlt />
   }
 
   render() {
     return (
       <div>
-        <button className={this.props.addOrUpdate ? 'buttonAdd' : 'buttonUpdate'} onClick={this.openModal}>{this.props.addOrUpdate ? 'Add' : 'Edit'}</button>
+        <button className={this.props.addOrUpdate ? 'buttonAdd' : 'buttonUpdate'} onClick={this.openModal}>
+          {this.displaySymbol(this.props.addOrUpdate)}
+        </button>
         <Modal isOpen={this.state.modalIsOpen} style={customStyles} ariaHideApp={false}>
           {this.listOrItem()}
         </Modal>
