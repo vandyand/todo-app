@@ -37,35 +37,27 @@ export default class extends React.Component {
                         id='name'
                         name='name'
                         onChange={this.changeHandler}
-                        value={this.state.name}
+                        value={this.addOrUpdate ? this.state.name : this.props.curItem.name}
                         required />
-
-                    <br />
-
                     <label>Description:</label>
                     <input
                         type='text'
                         id='desc'
                         name='desc'
                         onChange={this.changeHandler}
-                        value={this.state.desc}
+                        value={this.addOrUpdate ? this.state.desc : this.props.curItem.desc}
                     />
-
-                    <br />
-
                     <label>Due:</label>
                     <input
                         type='text'
                         id='due'
                         name='due'
                         onChange={this.changeHandler}
-                        value={this.state.due}
+                        value={this.addOrUpdate ? this.state.due : this.props.curItem.due}
                     />
-
-                    <br />
-
+                    <input type='hidden' id='isComplete' name='isComplete' value='false'></input>
                     <button>{this.props.addOrUpdate === true ? 'Add' : 'Update'}</button>
-                    <button type="button" onClick={this.close}>Close</button>
+                    <button type='button' onClick={this.close}>Close</button>
                 </form>
             </div>
         )

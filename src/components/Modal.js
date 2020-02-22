@@ -42,10 +42,10 @@ export default class extends React.Component {
 
   listOrItem = () => {
     if (this.props.listOrItem) {
-      return (<ListForm submitHandler={this.props.submitHandler} closeButton={this.closeModal} addOrUpdate={this.props.addOrUpdate} state={this.props.state} />)
+      return (<ListForm submitHandler={this.props.submitHandler} closeButton={this.closeModal} addOrUpdate={this.props.addOrUpdate} curList={this.props.curList} />)
     }
     else {
-      return (<ItemForm submitHandler={this.props.submitHandler} closeButton={this.closeModal} addOrUpdate={this.props.addOrUpdate} />)
+      return (<ItemForm submitHandler={this.props.submitHandler} closeButton={this.closeModal} addOrUpdate={this.props.addOrUpdate} curItem={this.props.curItem} />)
     }
   }
 

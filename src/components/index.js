@@ -139,6 +139,11 @@ export default class extends React.Component {
             })
     }
 
+    toggleComplete = (itemToToggle) => {
+        this.updateItem(itemToToggle)
+    }
+
+
     render() {
         console.log("render state: ", this.state)
         return (
@@ -149,7 +154,7 @@ export default class extends React.Component {
                     deleteList={this.deleteList}
                     updateList={this.updateList} />
 
-                <List state={this.state} addItem={this.addItem} deleteItem={this.deleteItem} updateItem={this.updateItem} />
+                <List state={this.state} addItem={this.addItem} deleteItem={this.deleteItem} updateItem={this.updateItem} toggleComplete={this.toggleComplete}/>
 
             </div>
         )

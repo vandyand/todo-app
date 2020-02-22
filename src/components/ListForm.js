@@ -18,7 +18,7 @@ export default class extends React.Component {
         let data = { ...this.state }
         console.log("form submitHandler called! data:", data)
         if (!this.props.addOrUpdate) {
-            data = { _id: this.props.state._id, ...data }
+            data = { _id: this.props.curList._id, ...data }
         }
         this.props.submitHandler(data)
         this.props.closeButton()
@@ -39,7 +39,7 @@ export default class extends React.Component {
                         id='name'
                         name='name'
                         onChange={this.changeHandler}
-                        value={this.state.name}
+                        value={this.addOrUpdate ? this.state.name : this.props.curList.name}
                         required />
                     <label>Description:</label>
                     <input
@@ -47,7 +47,7 @@ export default class extends React.Component {
                         id='desc'
                         name='desc'
                         onChange={this.changeHandler}
-                        value={this.state.desc}
+                        value={this.addOrUpdate ? this.state.desc : this.props.curList.desc}
                     />
                     <button>{this.props.addOrUpdate === true ? 'Add' : 'Update'}</button>
                     <button type="button" onClick={this.close}>Close</button>

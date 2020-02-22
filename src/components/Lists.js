@@ -22,7 +22,7 @@ export default class extends React.Component {
                                 <div>{list.name}</div>
                                 {/* <div>{list.desc}</div> */}
                             </button>
-                            <Modal submitHandler={this.props.updateList} listOrItem={true} addOrUpdate={false} state={list} />
+                            <Modal submitHandler={this.props.updateList} listOrItem={true} addOrUpdate={false} curList={list} />
                             <button className="buttonDelete" onClick={() => this.props.deleteList(list)}>
                                 <FaTimes />
                             </button>
