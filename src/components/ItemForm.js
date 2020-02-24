@@ -12,9 +12,9 @@ export default class extends React.Component {
             due: '',
         }
 
-        if(props.curItem!=={}){
+        if (props.curItem !== {}) {
             this.state = {
-                name:props.curItem.name,
+                name: props.curItem.name,
                 list_id: props.curItem.list_id,
                 desc: props.curItem.desc,
                 due: props.curItem.due
@@ -43,7 +43,7 @@ export default class extends React.Component {
         return (
             <div>
                 <h2>{this.props.addOrUpdate === true ? 'Add' : 'Update'} Item:</h2>
-                <form onSubmit={this.submitHandler}>
+                <form className="Form" onSubmit={this.submitHandler}>
                     <label>Name:</label>
                     <input
                         type='text'
@@ -69,8 +69,10 @@ export default class extends React.Component {
                         value={this.state.due}
                     />
                     <input type='hidden' id='isComplete' name='isComplete' value='false'></input>
-                    <button>{this.props.addOrUpdate === true ? 'Add' : 'Update'}</button>
-                    <button type='button' onClick={this.close}>Close</button>
+                    <div>
+                        <button>{this.props.addOrUpdate === true ? 'Add' : 'Update'}</button>
+                        <button type='button' onClick={this.close}>Close</button>
+                    </div>
                 </form>
             </div>
         )

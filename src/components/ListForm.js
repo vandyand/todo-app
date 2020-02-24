@@ -10,9 +10,9 @@ export default class extends React.Component {
             desc: ''
         }
 
-        if(props.curList!=={}){
+        if (props.curList !== {}) {
             this.state = {
-                name:props.curList.name,
+                name: props.curList.name,
                 desc: props.curList.desc
             }
         }
@@ -43,7 +43,7 @@ export default class extends React.Component {
         return (
             <div>
                 <h2>{this.props.addOrUpdate === true ? 'Add' : 'Update'} List:</h2>
-                <form onSubmit={this.submitHandler}>
+                <form className="Form" onSubmit={this.submitHandler}>
                     <label>Name:</label>
                     <input
                         type='text'
@@ -60,8 +60,10 @@ export default class extends React.Component {
                         onChange={this.changeHandler}
                         value={this.state.desc}
                     />
-                    <button>{this.props.addOrUpdate === true ? 'Add' : 'Update'}</button>
-                    <button type="button" onClick={this.close}>Close</button>
+                    <div>
+                        <button>{this.props.addOrUpdate === true ? 'Add' : 'Update'}</button>
+                        <button type="button" onClick={this.close}>Close</button>
+                    </div>
                 </form>
             </div>
         )

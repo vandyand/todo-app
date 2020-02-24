@@ -1,19 +1,12 @@
-/* * {
-  background-color:lightgray;
-} */
-
 .App {
-  /* border: 2px solid black; */
   margin: 5% 10% 10% 10%;
 }
 
 .index {
-  /* border: 2px solid brown; */
   display: flex;
 }
 
 .lists {
-  /* border: 2px solid red; */
   width: 35%;
   display: flex;
   flex-direction: column;
@@ -22,17 +15,20 @@
 }
 
 .listSelect {
-  /* border: 2px solid orange; */
   display: flex;
   padding: 2px;
 }
 
 .listName {
-  flex:1;
+  flex: 1;
 }
 
-.listName button{
-  width:100%;
+.listName button {
+  width: 100%;
+}
+
+.listName button:hover {
+  background-color: #222;
 }
 
 .listDisplay {
@@ -42,43 +38,28 @@
   display: flex;
   flex-direction: column;
   margin: 0 0 0 2%;
-  /* align-items:center; */
-  /* justify-content: space-around; */
 }
-
-
-
 
 .item {
-  /* border: 2px solid green; */
-  /* width: 20%; */
-  display:flex;
-  padding:2px;
-}
-
-.itemName {
-  display:flex;
-  flex:1;
-  /* width:20%; */
-  border: 1px solid #333;
-  /* border-radius: 0.5em; */
+  display: flex;
   padding: 2px;
 }
 
-/* .itemName div {
-  border:2px solid black;
-} */
-
-
-/* .addList {
-  padding:2px;
-  margin:2px 10px 2px 35%;
+.itemName {
+  display: flex;
+  flex: 1;
+  border: 1px solid #333;
+  padding: 2px;
 }
 
-.addItem {
-  padding:2px;
-  margin:2px 10px 2px 10%;
-} */
+.Form {
+  display:flex;
+  flex-direction:column;
+}
+.Form div {
+  display:flex;
+  justify-content:space-between;
+}
 
 button {
   padding: 8px;
@@ -87,13 +68,8 @@ button {
   color: #ddd;
 }
 
-/* button:hover {
-  background-color: #777;
-  color: #000;
-} */
-
 .buttonAdd {
-  border-radius:50em;
+  border-radius: 50em;
   margin: 1em;
   background-color: green;
 }
@@ -115,7 +91,7 @@ button {
   color: black;
 }
 
-.buttonUpdate:hover{
+.buttonUpdate:hover {
   background-color: #9b870c;
 }
 
