@@ -2,11 +2,24 @@ import React from 'react'
 
 export default class extends React.Component {
 
-    state = {
-        name: '',
-        list_id: '',
-        desc: '',
-        due: '',
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            name: '',
+            list_id: '',
+            desc: '',
+            due: '',
+        }
+
+        if(props.curItem!=={}){
+            this.state = {
+                name:props.curItem.name,
+                list_id: props.curItem.list_id,
+                desc: props.curItem.desc,
+                due: props.curItem.due
+            }
+        }
     }
 
     changeHandler = ({ target }) => {
@@ -37,7 +50,7 @@ export default class extends React.Component {
                         id='name'
                         name='name'
                         onChange={this.changeHandler}
-                        value={this.addOrUpdate ? this.state.name : this.props.curItem.name}
+                        value={this.state.name}
                         required />
                     <label>Description:</label>
                     <input
@@ -45,7 +58,7 @@ export default class extends React.Component {
                         id='desc'
                         name='desc'
                         onChange={this.changeHandler}
-                        value={this.addOrUpdate ? this.state.desc : this.props.curItem.desc}
+                        value={this.state.desc}
                     />
                     <label>Due:</label>
                     <input
@@ -53,7 +66,7 @@ export default class extends React.Component {
                         id='due'
                         name='due'
                         onChange={this.changeHandler}
-                        value={this.addOrUpdate ? this.state.due : this.props.curItem.due}
+                        value={this.state.due}
                     />
                     <input type='hidden' id='isComplete' name='isComplete' value='false'></input>
                     <button>{this.props.addOrUpdate === true ? 'Add' : 'Update'}</button>

@@ -18,18 +18,21 @@ export default class extends React.Component {
                 {this.props.lists.map((list, index) => {
                     return (
                         <div className="listSelect" key={index}>
-                            <button onClick={() => this.props.selectList(list._id)}>
-                                <div>{list.name}</div>
-                                {/* <div>{list.desc}</div> */}
-                            </button>
+                            <div className="listName">
+                                <button onClick={() => this.props.selectList(list._id)}>
+                                    {list.name}
+                                </button>
+                            </div>
                             <Modal submitHandler={this.props.updateList} listOrItem={true} addOrUpdate={false} curList={list} />
-                            <button className="buttonDelete" onClick={() => this.props.deleteList(list)}>
-                                <FaTimes />
-                            </button>
+                            <div>
+                                <button className="buttonDelete" onClick={() => this.props.deleteList(list)}>
+                                    <FaTimes />
+                                </button>
+                            </div>
                         </div>
                     )
                 })}
-                <Modal submitHandler={this.props.addList} listOrItem={true} addOrUpdate={true} />
+                <Modal submitHandler={this.props.addList} listOrItem={true} addOrUpdate={true} curList={{}} />
             </div>
         )
     }

@@ -56,7 +56,7 @@ export default class extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={this.props.addOrUpdate ? this.props.listOrItem ? 'addList' : 'addItem' : 'updateButton'}>
         <button className={this.props.addOrUpdate ? 'buttonAdd' : 'buttonUpdate'} onClick={this.openModal}>
           {this.displaySymbol(this.props.addOrUpdate)}
         </button>

@@ -2,9 +2,20 @@ import React from 'react'
 
 export default class extends React.Component {
 
-    state = {
-        name: '',
-        desc: '',
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            name: '',
+            desc: ''
+        }
+
+        if(props.curList!=={}){
+            this.state = {
+                name:props.curList.name,
+                desc: props.curList.desc
+            }
+        }
     }
 
     changeHandler = ({ target }) => {
@@ -39,7 +50,7 @@ export default class extends React.Component {
                         id='name'
                         name='name'
                         onChange={this.changeHandler}
-                        value={this.addOrUpdate ? this.state.name : this.props.curList.name}
+                        value={this.state.name}
                         required />
                     <label>Description:</label>
                     <input
@@ -47,7 +58,7 @@ export default class extends React.Component {
                         id='desc'
                         name='desc'
                         onChange={this.changeHandler}
-                        value={this.addOrUpdate ? this.state.desc : this.props.curList.desc}
+                        value={this.state.desc}
                     />
                     <button>{this.props.addOrUpdate === true ? 'Add' : 'Update'}</button>
                     <button type="button" onClick={this.close}>Close</button>

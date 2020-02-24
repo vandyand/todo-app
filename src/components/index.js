@@ -101,7 +101,6 @@ export default class extends React.Component {
                 .catch(err => console.log(err))
                 .then(response => {
                     console.log(response)
-                    this.fetchLists()
                     this.fetchItems()
                 })
         }
@@ -119,7 +118,6 @@ export default class extends React.Component {
                 console.log(response)
                 this.fetchLists()
                 this.fetchItems()
-                this.setState({ list_id: '' })
             })
     }
 
@@ -133,15 +131,13 @@ export default class extends React.Component {
             .catch(err => console.log(err))
             .then(response => {
                 console.log(response)
-                this.fetchLists()
                 this.fetchItems()
-                this.setState({ list_id: '' })
             })
     }
 
-    toggleComplete = (itemToToggle) => {
-        this.updateItem(itemToToggle)
-    }
+    // toggleComplete = (itemToToggle) => {
+    //     this.updateItem(itemToToggle)
+    // }
 
 
     render() {
@@ -154,7 +150,7 @@ export default class extends React.Component {
                     deleteList={this.deleteList}
                     updateList={this.updateList} />
 
-                <List state={this.state} addItem={this.addItem} deleteItem={this.deleteItem} updateItem={this.updateItem} toggleComplete={this.toggleComplete}/>
+                <List state={this.state} addItem={this.addItem} deleteItem={this.deleteItem} updateItem={this.updateItem} />
 
             </div>
         )

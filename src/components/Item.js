@@ -11,26 +11,31 @@ export default class extends React.Component {
 
     toggleComplete = (data) => {
         const item = this.props.item
-        const newData = {
+        const newBody = {
             _id: item._id,
             name: item.name,
             desc: item.desc,
             due: item.due,
             isComplete: !item.isComplete
         }
-        this.props.toggleComplete(newData)
+        this.props.updateItem(newBody)
     }
 
     render() {
         const item = this.props.item
         return (
             <div className="item" key={item._id}>
+                <div>
+                    <button className="buttonCheck" onClick={this.toggleComplete}><FaCheck /></button>
+                </div>
                 <div className="itemName">{item.isComplete ? <strike>{item.name}</strike> : item.name}</div>
                 {/* <div>{this.props.item.desc}</div>
                 <div>{this.props.item.due}</div> */}
-                <button className="buttonCheck" onClick={this.toggleComplete}><FaCheck /></button>
-                <Modal submitHandler={this.addIdToBody} listOrItem={false} addOrUpdate={false} curItem={item}/>
-                <button className="buttonDelete" onClick={this.props.deleteItem}><FaTimes /></button>
+
+                <Modal submitHandler={this.addIdToBody} listOrItem={false} addOrUpdate={false} curItem={item} />
+                <div>
+                    <button className="buttonDelete" onClick={() => this.props.deleteItem(item)}><FaTimes /></button>
+                </div>
             </div>
         )
     }
