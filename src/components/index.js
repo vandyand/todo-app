@@ -21,8 +21,9 @@ export default class extends React.Component {
     }
 
     fetchLists = () => {
-        console.log('fetchLists called!')
-        fetch(`${API_URL}/lists`)
+        const url = `${API_URL}/lists`
+        console.log('fetchLists called! url: ',url)
+        fetch(url)
             .then(response => response.json())
             .then(lists => {
                 this.setState({ lists })
@@ -31,8 +32,9 @@ export default class extends React.Component {
     }
 
     fetchItems = () => {
-        console.log('fetchItems called!')
-        fetch(`${API_URL}/items`)
+        const url = `${API_URL}/items`
+        console.log('fetchItems called! url: ', url)
+        fetch(url)
             .then(response => response.json())
             .then(items => {
                 this.setState({ items })
@@ -134,11 +136,6 @@ export default class extends React.Component {
                 this.fetchItems()
             })
     }
-
-    // toggleComplete = (itemToToggle) => {
-    //     this.updateItem(itemToToggle)
-    // }
-
 
     render() {
         console.log("render state: ", this.state)
