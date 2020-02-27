@@ -1,6 +1,5 @@
 import React from 'react'
 import Item from './Item'
-// import ItemForm from './ItemForm'
 import Modal from './Modal'
 
 

@@ -1,7 +1,5 @@
 import React from 'react'
 import Modal from './Modal'
-// import '../node_modules/font-awesome/css/font-awesome.min.css'
-// import { FontAwesomeIcon, FaTrash } from '@fortawesome/react-fontawesome'
 import { FaTimes } from 'react-icons/fa'
 
 export default class extends React.Component {
