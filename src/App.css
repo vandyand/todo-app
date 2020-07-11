@@ -85,7 +85,7 @@ button {
 }
 
 .buttonAdd {
-  border-radius: 50em;
+  border-radius: 50%;
   margin: 1em;
   background-color: green;
 }
